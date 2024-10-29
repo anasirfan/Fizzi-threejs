@@ -1,14 +1,17 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-// import {Perf} from "r3f-perf"
+
 import { View } from "@react-three/drei";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
-const Loader = dynamic(() => import("@react-three/drei").then((mod) => mod.Loader), {
+const Loader = dynamic(
+  () => import("@react-three/drei").then((mod) => mod.Loader),
+  {
     ssr: false,
-  });
+  },
+);
 
 type Props = {};
 
@@ -35,9 +38,8 @@ export default function ViewCanvas({}: Props) {
         <Suspense fallback={null}>
           <View.Port />
         </Suspense>
-        {/* <Perf /> */}
-        <Loader />
       </Canvas>
+      <Loader />
     </>
   );
 }
